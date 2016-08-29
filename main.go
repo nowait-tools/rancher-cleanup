@@ -36,16 +36,16 @@ func init() {
 }
 
 func setEnvVariables() {
-	if len(os.Getenv("RANCHER_API_ENDPOINT")) > 0 {
-		apiEndpoint = os.Getenv("RANCHER_API_ENDPOINT")
+	if len(os.Getenv("CATTLE_URL")) > 0 {
+		apiEndpoint = os.Getenv("CATTLE_URL")
 	}
 
-	if len(os.Getenv("RANCHER_API_ACCESSKEY")) > 0 {
-		apiAccessKey = os.Getenv("RANCHER_API_ACCESSKEY")
+	if len(os.Getenv("CATTLE_ACCESS_KEY")) > 0 {
+		apiAccessKey = os.Getenv("CATTLE_ACCESS_KEY")
 	}
 
-	if len(os.Getenv("RANCHER_API_SECRETKEY")) > 0 {
-		apiSecretKey = os.Getenv("RANCHER_API_SECRETKEY")
+	if len(os.Getenv("CATTLE_SECRET_KEY")) > 0 {
+		apiSecretKey = os.Getenv("CATTLE_SECRET_KEY")
 	}
 
 	if len(os.Getenv("RANCHER_API_TIMEOUT")) > 0 {
@@ -59,8 +59,8 @@ func setEnvVariables() {
 		apiTimeout = timeout
 	}
 
-	if len(os.Getenv("NOWAIT_HOST_REMOVAL_INTERVAL")) > 0 {
-		i := os.Getenv("NOWAIT_HOST_REMOVAL_INTERVAL")
+	if len(os.Getenv("HOST_REMOVAL_INTERVAL")) > 0 {
+		i := os.Getenv("HOST_REMOVAL_INTERVAL")
 		interval, err := strconv.Atoi(i)
 		if err != nil {
 			log.WithFields(logrus.Fields{
@@ -71,10 +71,10 @@ func setEnvVariables() {
 	}
 
 	log.WithFields(logrus.Fields{
-		"RANCHER_API_ENDPOINT":  apiEndpoint,
-		"RANCHER_API_ACCESSKEY": apiAccessKey,
-		"RANCHER_API_SECRETKEY": apiSecretKey,
-		"RANCHER_API_TIMEOUT":   apiTimeout,
+		"CATTLE_URL":          apiEndpoint,
+		"CATTLE_ACCESS_KEY":   apiAccessKey,
+		"CATTLE_SECRET_KEY":   apiSecretKey,
+		"RANCHER_API_TIMEOUT": apiTimeout,
 	}).Debug("Environment variables set")
 }
 
